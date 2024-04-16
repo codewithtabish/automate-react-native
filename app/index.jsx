@@ -1,29 +1,73 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
-import { Link } from 'expo-router'
-
+import ThemedContainer from '../components/ThemedContainer'
+import { Link, router } from 'expo-router'
+import { images } from '../constants'
+import {
+  responsiveScreenHeight,
+  responsiveScreenWidth,
+  responsiveScreenFontSize,
+} from "react-native-responsive-dimensions";
+import CustomButton from '../components/CustomButton'
 
 
 const index = () => {
+
   return (
-    <View
-      style={{
-        flex: 1,
-      }}
-    >
-      <Text>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-        quibusdam tenetur autem quaerat nobis odio. Corporis odio tempore quas
-        sapiente praesentium, repellat, libero deleniti dolorem ipsum suscipit
-        aperiam perspiciatis enim? Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Accusantium quibusdam tenetur autem quaerat nobis
-        odio. Corporis odio tempore quas sapiente praesentium, repellat, libero
-        deleniti dolorem ipsum suscipit aperiam perspiciatis enim? Lorem ipsum
-        dolor sit amet consectetur adipisicing elit. Accusantium quibusdam
-        tenetur autem quaerat nobis odio. 
-      </Text>
-      <Link href="/profile">Profile</Link>
-    </View>
+    <ThemedContainer>
+      <ScrollView
+        contentContainerStyle={{
+          height: "100%",
+        }}
+      >
+        <View className="flex justify-center items-center px-4 h-full">
+          <Image
+            resizeMode="contain"
+            style={{
+              width: responsiveScreenWidth(80),
+              height: responsiveScreenHeight(6),
+              marginTop: responsiveScreenHeight(5),
+              margin: "auto",
+            }}
+            source={images.logo}
+          />
+          <Image
+            style={{
+              width: responsiveScreenWidth(80),
+              height: responsiveScreenHeight(40),
+            }}
+            resizeMode="contain"
+            source={images.cards}
+          />
+
+          <View className="relative mt-1">
+            <Text
+              className=" text-white font-bold text-center"
+              style={{ fontSize: responsiveScreenFontSize(3.3) }}
+            >
+              Discover Endless{"\n"}
+              Possibilities with{" "}
+              <Text className="text-secondary-200">Aora</Text>
+            </Text>
+
+            <Image
+              source={images.path}
+              className="w-[136px] h-[15px] absolute -bottom-2 -right-8"
+              resizeMode="contain"
+            />
+          </View>
+          <Text className="text-sm font-pregular text-gray-100 mt-4 text-center">
+            Where Creativity Meets Innovation: Embark on a Journey of Limitless
+            Exploration with Aora
+          </Text>
+          <CustomButton
+            title="Continue with Email"
+            handlePress={() => router.push("/sign-in")}
+            containerStyles="w-full mt-7"
+          />
+        </View>
+      </ScrollView>
+    </ThemedContainer>
   );
 }
 
