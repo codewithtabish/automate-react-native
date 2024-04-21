@@ -1,5 +1,5 @@
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Button, Image, ScrollView, StyleSheet, Text, View } from 'react-native'
+import React, { useEffect } from "react";
 import ThemedContainer from '../components/ThemedContainer'
 import { Link, router } from 'expo-router'
 import { images } from '../constants'
@@ -9,9 +9,26 @@ import {
   responsiveScreenFontSize,
 } from "react-native-responsive-dimensions";
 import CustomButton from '../components/CustomButton'
-
+import changeNavigationBarColor, {
+  setNavigationBarColor,
+  hideNavigationBar,
+} from "react-native-navigation-bar-color";
 
 const index = () => {
+
+    useEffect(() => {
+      (async () => {
+        try {
+          const response = await changeNavigationBarColor("#161622", true);
+          console.log(response); // {success: true}
+        } catch (e) {
+          console.log(e); // {success: false}
+        }
+      })();
+    }, []);
+
+  
+  
 
   return (
     <ThemedContainer>
@@ -65,6 +82,7 @@ const index = () => {
             handlePress={() => router.push("/sign-in")}
             containerStyles="w-full mt-7"
           />
+       
         </View>
       </ScrollView>
     </ThemedContainer>
