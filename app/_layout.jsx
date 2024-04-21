@@ -41,7 +41,8 @@ const _layout = () => {
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
         <Stack screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="index" />
+          <Stack.Screen name="(welcome)" />
+          {/* <Stack.Screen name="index" /> */}
           <Stack.Screen name="(tabs)" />
           <Stack.Screen name="(auth)" />
         </Stack>

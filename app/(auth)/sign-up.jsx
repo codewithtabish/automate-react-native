@@ -9,7 +9,7 @@ import {
   Platform,
 } from "react-native";
 import React, { useState, useRef, useEffect } from "react";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import ThemedContainer from "../../components/ThemedContainer";
 import { images } from "../../constants";
 import {
@@ -18,25 +18,23 @@ import {
 } from "react-native-responsive-dimensions";
 import CustomButton from "../../components/CustomButton";
 import Colors from "../../constants/Colors";
+import { register } from "../../lib/appWrite";
 
 const SignUp = () => {
   const [isLoading, setisLoading] = useState(false);
   const inputField = useRef(null);
   const [showImage, setshowImage] = useState(true);
 
-  const handleSignUp = () => {
+  const handleSignUp = async () => {
     setisLoading(true);
+    register("zain@gmail.com", "password", "name");
+
     // changeInputFieldFocus();
     setTimeout(() => {
       setisLoading(false);
+      router.replace("/home");
     }, 3000);
   };
-
-  // useEffect(() => {
-  //   handleSignUp();
-  //   // inputField.current.focus();
-  //   // return () => {};
-  // }, []);
 
   return (
     <ThemedContainer>

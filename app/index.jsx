@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useEffect } from "react";
 import ThemedContainer from "../components/ThemedContainer";
-import { Link, router } from "expo-router";
+import { Link, Redirect, router } from "expo-router";
 import { images } from "../constants";
 import {
   responsiveScreenHeight,
@@ -16,8 +16,27 @@ import {
   responsiveScreenFontSize,
 } from "react-native-responsive-dimensions";
 import CustomButton from "../components/CustomButton";
+import { TouchableOpacity } from "react-native";
 
 const index = () => {
+  useEffect(() => {
+    setTimeout(() => {
+      router.replace("/(welcome)/socialAccountScreen");
+    }, 3000);
+  }, []);
+  return (
+    <View className="flex-1 justify-center items-center">
+      <Text>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti,
+        culpa.
+      </Text>
+      {/* <TouchableOpacity className="bg-secondary-100 p-3 rounded-none mx-4">
+        <Link href="/(welcome)/welcomeScreen">
+          <Text>Welcome</Text>
+        </Link>
+      </TouchableOpacity> */}
+    </View>
+  );
   return (
     <ThemedContainer>
       <ScrollView
@@ -25,52 +44,15 @@ const index = () => {
           height: "100%",
         }}
       >
-        <View className="flex justify-center items-center px-4 h-full">
-          <Image
-            resizeMode="contain"
-            style={{
-              width: responsiveScreenWidth(80),
-              height: responsiveScreenHeight(6),
-              marginTop: responsiveScreenHeight(5),
-              margin: "auto",
-            }}
-            source={images.logo}
-          />
-          <Image
-            style={{
-              width: responsiveScreenWidth(80),
-              height: responsiveScreenHeight(40),
-            }}
-            resizeMode="contain"
-            source={images.cards}
-          />
-
-          <View className="relative mt-1">
-            <Text
-              className=" text-white font-bold text-center"
-              style={{ fontSize: responsiveScreenFontSize(3.3) }}
-            >
-              Discover Endless{"\n"}
-              Possibilities with{" "}
-              <Text className="text-secondary-200">Aora</Text>
-            </Text>
-
-            <Image
-              source={images.path}
-              className="w-[136px] h-[15px] absolute -bottom-2 -right-8"
-              resizeMode="contain"
-            />
-          </View>
-          <Text className="text-sm font-pregular text-gray-100 mt-4 text-center">
-            Where Creativity Meets Innovation: Embark on a Journey of Limitless
-            Exploration with Aora
-          </Text>
-          <CustomButton
-            title="Continue with Email"
-            handlePress={() => router.push("/sign-in")}
-            containerStyles="w-full mt-7"
-          />
-        </View>
+        {/* <Text>
+          THIS IS THE SPLASH SCREEN Lorem ipsum dolor sit amet, consectetur
+          adipisicing elit. Aliquam, dolorum!
+        </Text> */}
+        <TouchableOpacity>
+          <Link href="/home">
+            <Text>Welcome</Text>
+          </Link>
+        </TouchableOpacity>
       </ScrollView>
     </ThemedContainer>
   );

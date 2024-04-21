@@ -11,6 +11,9 @@ import logout from "../assets/icons/logout.png";
 import eyeHide from "../assets/icons/eye-hide.png";
 import eye from "../assets/icons/eye.png";
 import play from "../assets/icons/play.png";
+import apple from "../assets/icons/apple.png";
+import facebook from "../assets/icons/facebook.png";
+import google from "../assets/icons/google.png";
 
 export default {
   play,
@@ -26,4 +29,7 @@ export default {
   logout,
   eyeHide,
   eye,
+  apple,
+  facebook,
+  google
 };
